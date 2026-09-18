@@ -1,0 +1,359 @@
+/* ===================================================
+   명지국제오션룸 — B안 (아이보리 · 브라스 · 에디토리얼)
+   색상은 :root 변수만 고치면 전체가 바뀝니다.
+   =================================================== */
+
+:root{
+  --bg:      #f7f4ee;   /* 기본 배경 (아이보리) */
+  --bg-2:    #efeade;   /* 교차 섹션 배경 */
+  --ink:     #1c1b19;   /* 본문 글자 */
+  --ink-2:   #6b655c;   /* 보조 글자 */
+  --brass:   #8a6d3b;   /* 포인트 (브라스) */
+  --brass-2: #ab8b52;
+  --line:    #ddd6c8;
+  --wrap:    1180px;
+
+  --img-dim:       .28;   /* 이미지 위 검은 레이어 농도 */
+  --img-dim-hover: .06;
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+
+html{
+  scroll-behavior:smooth;
+  overflow-x:hidden;
+  -webkit-text-size-adjust:100%;
+}
+img, svg, video, iframe, table{ max-width:100%; }
+
+body{
+  width:100%; max-width:100%; overflow-x:hidden;
+  background:var(--bg); color:var(--ink);
+  font-family:'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight:400; line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+
+a{ color:inherit; text-decoration:none; }
+ul{ list-style:none; }
+em{ font-style:normal; }
+
+.wrap{ width:100%; max-width:var(--wrap); margin:0 auto; padding:0 24px; }
+.wrap.narrow{ max-width:760px; }
+.dim{ color:var(--ink-2); font-size:.86em; }
+
+/* ---------- 버튼 ---------- */
+.btn{
+  display:inline-block; padding:15px 30px;
+  font-size:15px; font-weight:500; letter-spacing:.01em;
+  border:1px solid transparent; transition:.22s ease; white-space:nowrap;
+}
+.btn-fill{ background:var(--ink); color:var(--bg); }
+.btn-fill:hover{ background:var(--brass); }
+.btn-line{ border-color:var(--line); color:var(--ink); }
+.btn-line:hover{ border-color:var(--ink); }
+
+/* ---------- 헤더 ---------- */
+.hdr{
+  position:fixed; top:0; left:0; right:0; z-index:50;
+  background:rgba(247,244,238,0);
+  border-bottom:1px solid transparent;
+  transition:.3s ease;
+}
+.hdr.on{
+  background:rgba(247,244,238,.95);
+  backdrop-filter:blur(10px);
+  border-bottom-color:var(--line);
+}
+.hdr-in{
+  display:flex; align-items:center; justify-content:space-between;
+  height:76px; gap:20px;
+}
+.brand{ display:flex; flex-direction:column; line-height:1.25; }
+.brand-ko{ font-family:'Noto Serif KR', serif; font-weight:700; font-size:19px; letter-spacing:-.01em; }
+.brand-en{ font-size:10px; letter-spacing:.22em; color:var(--ink-2); }
+.nav{ display:flex; gap:30px; }
+.nav a{
+  font-size:15px; color:var(--ink-2); position:relative; padding-bottom:3px;
+}
+.nav a::after{
+  content:''; position:absolute; left:0; bottom:0; width:0; height:1px;
+  background:var(--brass); transition:width .25s ease;
+}
+.nav a:hover{ color:var(--ink); }
+.nav a:hover::after{ width:100%; }
+.hdr-tel{
+  font-family:'Noto Serif KR', serif; font-weight:600; font-size:17px;
+  color:var(--brass); letter-spacing:.01em;
+}
+
+/* ---------- 히어로 (좌우 분할) ---------- */
+.hero{ padding:150px 0 100px; }
+.hero-in{
+  display:grid; gap:54px;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+}
+.kicker{
+  font-size:12px; letter-spacing:.24em; color:var(--brass);
+  font-weight:500; margin-bottom:26px;
+}
+.hero h1{
+  font-family:'Noto Serif KR', serif;
+  font-size:clamp(34px, 4.6vw, 58px);
+  font-weight:700; line-height:1.34; letter-spacing:-.025em;
+  margin-bottom:28px;
+}
+.hero h1 em{ color:var(--brass); }
+.dot{ color:var(--brass); }
+.hero-sub{ color:var(--ink-2); font-size:17px; margin-bottom:38px; }
+.hero-act{ display:flex; gap:12px; flex-wrap:wrap; }
+
+.hero-fig{ position:relative; }
+.hero-fig img{
+  width:100%; aspect-ratio:3/4; object-fit:cover; display:block;
+  filter:saturate(.92);
+}
+.hero-fig::after{
+  content:''; position:absolute; inset:0;
+  background:rgba(0,0,0,var(--img-dim)); pointer-events:none;
+}
+.hero-fig figcaption{
+  position:absolute; left:0; bottom:0; z-index:2;
+  background:var(--bg); color:var(--ink-2);
+  padding:14px 22px 0 0;
+  font-size:11px; letter-spacing:.24em;
+}
+
+/* ---------- 섹션 공통 ---------- */
+.sec{ padding:110px 0; }
+.sec-tint{ background:var(--bg-2); }
+.label{
+  font-size:11px; letter-spacing:.26em; color:var(--brass);
+  font-weight:600; margin-bottom:14px;
+}
+.h-serif{
+  font-family:'Noto Serif KR', serif;
+  font-size:clamp(27px, 3.6vw, 40px);
+  font-weight:700; letter-spacing:-.02em; margin-bottom:18px;
+}
+.sec-sub{ color:var(--ink-2); max-width:620px; margin-bottom:52px; }
+
+/* ---------- 인사말 ---------- */
+.letter{ margin-top:44px; }
+.letter p{ margin-bottom:26px; font-size:16.5px; }
+.letter-lead{
+  font-family:'Noto Serif KR', serif;
+  font-size:20px !important; font-weight:600; color:var(--ink);
+}
+.pull{
+  font-family:'Noto Serif KR', serif;
+  font-size:26px !important; font-weight:600; line-height:1.55;
+  color:var(--brass); text-align:center;
+  padding:38px 0; margin:40px 0 !important;
+  border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+}
+.sign{
+  margin-top:52px; padding-top:26px;
+  border-top:1px solid var(--line);
+  display:flex; flex-direction:column; align-items:flex-end; gap:2px;
+}
+.sign-role{ font-size:13px; color:var(--ink-2); letter-spacing:.06em; }
+.sign-name{
+  font-family:'Noto Serif KR', serif;
+  font-size:30px; font-weight:700; letter-spacing:.1em;
+}
+.sign-tel{
+  margin-top:8px; font-size:18px; font-weight:600; color:var(--brass);
+}
+
+/* ---------- 주대 (표 형식) ---------- */
+.ptable{ border-top:2px solid var(--ink); }
+.prow{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:28px; padding:30px 4px;
+  border-bottom:1px solid var(--line);
+  transition:.22s ease;
+}
+.prow:hover{ background:rgba(138,109,59,.055); padding-left:14px; }
+.prow-hero{ background:rgba(138,109,59,.07); }
+.prow-hero:hover{ background:rgba(138,109,59,.11); }
+.ptag{
+  display:inline-block; margin-bottom:9px;
+  font-size:11px; font-weight:600; letter-spacing:.16em;
+  color:var(--brass); border:1px solid var(--brass);
+  padding:4px 12px;
+}
+.pitems{ font-size:16px; color:var(--ink); line-height:1.6; }
+.pcost{
+  font-family:'Noto Serif KR', serif;
+  font-size:clamp(28px, 4vw, 40px); font-weight:700;
+  letter-spacing:-.03em; white-space:nowrap;
+}
+.pcost span{ font-size:15px; font-weight:400; margin-left:3px; color:var(--ink-2); }
+.pnote{ margin-top:26px; font-size:13.5px; color:var(--ink-2); }
+
+/* ---------- 장점 (2 x 2) ---------- */
+.mgrid{
+  display:grid; gap:0;
+  grid-template-columns:repeat(2, 1fr);   /* ← 2 x 2 */
+  border-top:1px solid var(--line);
+  border-left:1px solid var(--line);
+  margin-top:44px;
+}
+.mitem{
+  padding:44px 40px;
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  transition:.22s ease;
+}
+.mitem:hover{ background:rgba(138,109,59,.055); }
+.mnum{
+  display:block; margin-bottom:18px;
+  font-family:'Noto Serif KR', serif;
+  font-size:15px; font-weight:700; letter-spacing:.14em; color:var(--brass);
+}
+.mitem h3{
+  font-family:'Noto Serif KR', serif;
+  font-size:21px; font-weight:600; margin-bottom:12px; letter-spacing:-.01em;
+}
+.mitem p{ color:var(--ink-2); font-size:15.5px; }
+
+/* ---------- 이벤트 (좌우 교차) ---------- */
+.elist{ margin-top:56px; }
+.erow{
+  display:grid; gap:0;
+  grid-template-columns:1fr 1fr;
+  align-items:stretch;
+}
+.erow + .erow{ border-top:1px solid var(--line); }
+
+.epic{ position:relative; overflow:hidden; background:#241f19; }
+.epic img{
+  width:100%; height:100%; min-height:420px; object-fit:cover; display:block;
+  transition:transform .6s ease;
+}
+.epic::after{
+  content:''; position:absolute; inset:0;
+  background:rgba(0,0,0,var(--img-dim));
+  transition:background .4s ease; pointer-events:none;
+}
+.erow:hover .epic img{ transform:scale(1.045); }
+.erow:hover .epic::after{ background:rgba(0,0,0,var(--img-dim-hover)); }
+
+.etxt{
+  display:flex; flex-direction:column; justify-content:center;
+  padding:68px 64px;
+}
+.enum{
+  font-size:11px; letter-spacing:.24em; color:var(--brass);
+  font-weight:600; margin-bottom:18px;
+}
+.etxt h3{
+  font-family:'Noto Serif KR', serif;
+  font-size:clamp(23px,2.6vw,30px); font-weight:700;
+  margin-bottom:16px; letter-spacing:-.02em;
+}
+.etxt p{ color:var(--ink-2); font-size:16px; margin-bottom:28px; }
+.elink{
+  align-self:flex-start;
+  font-size:14.5px; font-weight:500; color:var(--ink);
+  padding-bottom:5px; border-bottom:1px solid var(--ink);
+  transition:.22s ease;
+}
+.elink:hover{ color:var(--brass); border-color:var(--brass); }
+
+/* 교차: 짝수 행은 이미지가 오른쪽 */
+.erow-rev .epic{ order:2; }
+.erow-rev .etxt{ order:1; }
+
+/* ---------- 오시는 길 ---------- */
+.lgrid{
+  display:grid; gap:44px;
+  grid-template-columns:.85fr 1.15fr;
+  margin-top:44px;
+}
+.linfo dl{ margin-bottom:34px; }
+.linfo dt{
+  font-size:11px; font-weight:600; letter-spacing:.18em;
+  color:var(--brass); margin-top:26px;
+  padding-bottom:8px; border-bottom:1px solid var(--line);
+}
+.linfo dt:first-child{ margin-top:0; }
+.linfo dd{ font-size:16.5px; margin-top:12px; }
+.big-tel{
+  font-family:'Noto Serif KR', serif;
+  font-size:26px; font-weight:700; color:var(--brass); letter-spacing:.01em;
+}
+.lact{ display:flex; gap:10px; flex-wrap:wrap; }
+
+.lmap{ border:1px solid var(--line); overflow:hidden; background:#e6e0d2; }
+/* iOS 사파리는 iframe 을 콘텐츠 크기만큼 늘립니다. 이 조합이 표준 우회법입니다. */
+.lmap iframe{
+  display:block; width:1px; min-width:100%; max-width:100%;
+  height:100%; min-height:460px; border:0;
+}
+
+/* ---------- 푸터 ---------- */
+.ftr{
+  background:var(--ink); color:#cfc9bd;
+  padding:56px 0 100px; font-size:14.5px;
+}
+.ftr-in{ display:flex; justify-content:space-between; gap:26px; flex-wrap:wrap; }
+.ftr-name{
+  font-family:'Noto Serif KR', serif;
+  font-size:19px; font-weight:700; color:var(--bg); margin-bottom:10px;
+}
+.ftr-r{ text-align:right; }
+.ftr-warn{ color:var(--brass-2); }
+.ftr-copy{ color:#807a70; font-size:12.5px; margin-top:10px; }
+
+/* ---------- 모바일 하단 전화 버튼 ---------- */
+.fcall{
+  position:fixed; left:0; right:0; bottom:0; z-index:60;
+  display:none; text-align:center;
+  background:var(--ink); color:var(--bg);
+  font-size:15.5px; font-weight:500; padding:17px;
+}
+
+/* ---------- 반응형 ---------- */
+@media (max-width:980px){
+  .hero-in{ grid-template-columns:1fr; gap:44px; }
+  .hero-fig img{ aspect-ratio:16/10; }
+  .hero-fig figcaption{ display:none; }
+  .lgrid{ grid-template-columns:1fr; }
+  .erow, .erow-rev{ grid-template-columns:1fr; }
+  .erow-rev .epic{ order:0; }
+  .erow-rev .etxt{ order:0; }
+  .epic img{ min-height:300px; }
+  .etxt{ padding:44px 30px; }
+}
+
+@media (max-width:760px){
+  .nav{ display:none; }
+  .hero{ padding:120px 0 70px; }
+  .sec{ padding:74px 0; }
+  .mgrid{ grid-template-columns:1fr; }   /* 폰에서는 1열 */
+  .mitem{ padding:34px 26px; }
+  .prow{ flex-direction:column; align-items:flex-start; gap:14px; }
+  .prow:hover{ padding-left:4px; }
+  .pull{ font-size:21px !important; padding:30px 0; }
+  .ftr{ padding-bottom:96px; }
+  .ftr-in{ flex-direction:column; }
+  .ftr-r{ text-align:left; }
+  .fcall{ display:block; }
+  .etxt{ padding:38px 24px; }
+}
+
+@media (max-width:420px){
+  .hdr-tel{ font-size:15px; }
+  .brand-ko{ font-size:17px; }
+}
+
+/* ---------- 등장 애니메이션 ---------- */
+.rv{ opacity:0; transform:translateY(24px); transition:.7s cubic-bezier(.2,.7,.3,1); }
+.rv.on{ opacity:1; transform:none; }
+@media (prefers-reduced-motion:reduce){
+  .rv{ opacity:1; transform:none; transition:none; }
+  html{ scroll-behavior:auto; }
+}
